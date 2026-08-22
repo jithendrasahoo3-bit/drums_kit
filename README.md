@@ -1,5 +1,6 @@
-<bold> <h1>Online  Drums kit</h1> </bold>
-<p>It is just for enjoy some time drums play and make you music notes. </p>
-<p>
-  Note: How to use it you can play by click on the image of drums or by alse typing key in keyboard as shown letters in image.
-</p>
+# Online  Drums kit
+live demo:- https://jithendrasahoo3-bit.github.io/drums_kit/
+
+It is just for enjoy some time drums play and make you music notes, fun with firends.
+
+Note: How to use it you can play by click on the image of drums or by else typing key in keyboard as shown letters in image.
