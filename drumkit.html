@@ -1,32 +1,57 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-
+<html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Drum Kit</title>
   <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
+  <header class="top-nav">
+    <a href="index.html" class="nav-back">&larr; Home</a>
+  </header>
 
-  <h1 id="title">Drum 🥁 Kit</h1>
-  <p> Note: you can play drums by click on it also by using keyboard the letters on drums</p>
-  <div class="set">
-    <button class="w drum">w</button>
-    <button class="a drum">a</button>
-    <button class="s drum">s</button>
-    <button class="d drum">d</button>
-    <button class="j drum">j</button>
-    <button class="k drum">k</button>
-    <button class="l drum">l</button>
-  </div>
+  <main class="wrapper">
+    <h1 id="title">Drum 🥁 Kit</h1>
+    <p class="subtitle">Click the drums or press the corresponding keys on your keyboard</p>
 
+    <div class="set" role="region" aria-label="Drum kit pads">
+      <button class="w drum" data-key="w" aria-label="Tom 1 drum, key W">
+        <span class="key-letter">w</span>
+        <span class="sound-name">Tom 1</span>
+      </button>
+      <button class="a drum" data-key="a" aria-label="Tom 2 drum, key A">
+        <span class="key-letter">a</span>
+        <span class="sound-name">Tom 2</span>
+      </button>
+      <button class="s drum" data-key="s" aria-label="Tom 3 drum, key S">
+        <span class="key-letter">s</span>
+        <span class="sound-name">Tom 3</span>
+      </button>
+      <button class="d drum" data-key="d" aria-label="Tom 4 drum, key D">
+        <span class="key-letter">d</span>
+        <span class="sound-name">Tom 4</span>
+      </button>
+      <button class="j drum" data-key="j" aria-label="Snare drum, key J">
+        <span class="key-letter">j</span>
+        <span class="sound-name">Snare</span>
+      </button>
+      <button class="k drum" data-key="k" aria-label="Crash cymbal, key K">
+        <span class="key-letter">k</span>
+        <span class="sound-name">Crash</span>
+      </button>
+      <button class="l drum" data-key="l" aria-label="Kick bass drum, key L">
+        <span class="key-letter">l</span>
+        <span class="sound-name">Kick</span>
+      </button>
+    </div>
+  </main>
 
   <footer>
-    Made in India.
+    Made with &hearts; in India.
   </footer>
-  <script src="index.js" charset="utf-8"></script>
-</body>
 
+  <script src="index.js"></script>
+</body>
 </html>

@@ -1,57 +1,64 @@
-var numofdrums = document.querySelectorAll(".drum").length;
-function onclick(key){
-    switch (key) {  
-        case "w":
-         var tom1 = new Audio("sounds/tom-1.mp3");
-         tom1.play();
-         break;
-        case "a":
-         var tom2 = new Audio("sounds/tom-2.mp3");  
-            tom2.play();
-            break;
-        case "s":
-         var tom3 = new Audio("sounds/tom-3.mp3");
-         tom3.play();
-         break;
-        case "d":
-            var tom4 = new Audio("sounds/tom-4.mp3");
-            tom4.play();
-            break;
-        case "j":
-            var snare = new Audio("sounds/snare.mp3");
-            snare.play();
-            break;
-        case "k":
-            var crash = new Audio("sounds/crash.mp3");
-            crash.play();
-            break;
-        case "l":
-            var kick = new Audio("sounds/kick-bass.mp3");
-            kick.play();
-            break;
-        default:
-            alert("Invalid key pressed");
-    }
-}
+// Sound mappings for each drum key
+const soundFiles = {
+  w: 'sounds/tom-1.mp3',
+  a: 'sounds/tom-2.mp3',
+  s: 'sounds/tom-3.mp3',
+  d: 'sounds/tom-4.mp3',
+  j: 'sounds/snare.mp3',
+  k: 'sounds/crash.mp3',
+  l: 'sounds/kick-bass.mp3',
+};
 
-function buttonanimation(currentkey) {
-    var activeButton = document.querySelector("." + currentkey);
-    activeButton.classList.add("pressed");
-    setTimeout(function() {
-        activeButton.classList.remove("pressed");
-    }, 500);
-
-}
-
-document.addEventListener("keydown", function(event){
-    var key = event.key;
-    onclick(key);
-    buttonanimation(key);
+// Pre-load audio elements for snappy, zero-latency playback
+const audioCache = {};
+Object.entries(soundFiles).forEach(([key, src]) => {
+  const audio = new Audio(src);
+  audio.preload = 'auto';
+  audioCache[key] = audio;
 });
-for (var i = 0; i < numofdrums; i++) {
-    document.querySelectorAll(".drum")[i].addEventListener("click", function() {
-        var buttonInnerHTML = this.innerHTML;
-        onclick(buttonInnerHTML);
-        buttonanimation(buttonInnerHTML);
-    });
+
+function playSound(key) {
+  const audio = audioCache[key];
+  if (!audio) return;
+
+  // Rewind and play immediately (allows rapid drumming)
+  audio.currentTime = 0;
+  audio.play().catch(() => {
+    // Gracefully ignore autoplay restrictions or playback errors
+  });
 }
+
+function animateButton(key) {
+  const drumButton = document.querySelector(`.drum.${key}`);
+  if (!drumButton) return;
+
+  drumButton.classList.add('pressed');
+  setTimeout(() => {
+    drumButton.classList.remove('pressed');
+  }, 120);
+}
+
+function handleDrumTrigger(key) {
+  const normalizedKey = key.toLowerCase();
+  if (normalizedKey in soundFiles) {
+    playSound(normalizedKey);
+    animateButton(normalizedKey);
+  }
+}
+
+// Keyboard events
+document.addEventListener('keydown', (event) => {
+  // Ignore modifier keys or repeating keydown while holding key
+  if (event.repeat || event.metaKey || event.ctrlKey || event.altKey) return;
+  handleDrumTrigger(event.key);
+});
+
+// Click and touch events on drum buttons
+document.querySelectorAll('.drum').forEach((button) => {
+  const triggerKey = button.dataset.key || button.textContent.trim().charAt(0);
+
+  button.addEventListener('pointerdown', (e) => {
+    e.preventDefault();
+    handleDrumTrigger(triggerKey);
+  });
+});

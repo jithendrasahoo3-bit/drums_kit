@@ -1,85 +1,174 @@
-body {
-  text-align: center;
-  background: linear-gradient(135deg, #4A102A 0%, #85193C 100%);
+* {
+  box-sizing: border-box;
 }
-p{
-  color: #C5172E;
-  font-size: 1.2rem;
+
+body {
+  margin: 0;
+  padding: 16px;
+  min-height: 100vh;
+  text-align: center;
+  background: linear-gradient(135deg, #4a102a 0%, #85193c 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Arvo", cursive, sans-serif;
+  color: #dbedf3;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.top-nav {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  justify-content: flex-start;
+  padding: 8px 12px;
+}
+
+.nav-back {
+  color: #fcf259;
+  text-decoration: none;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: rgba(252, 242, 89, 0.1);
+  border: 1px solid rgba(252, 242, 89, 0.3);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.nav-back:hover {
+  background: rgba(252, 242, 89, 0.25);
+  transform: translateX(-2px);
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1100px;
+  margin: auto;
 }
 
 h1 {
-  font-size: 5rem;
-  color: #DBEDF3;
-  font-family: "Arvo", cursive;
-  text-shadow: 3px 0 #DA0463;
-
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  color: #dbedf3;
+  margin: 12px 0 8px;
+  text-shadow: 3px 3px #da0463;
 }
 
-footer {
-  color: #DBEDF3;
-  font-family: sans-serif;
-}
-
-.w {
- background-image: url("images/tom1.png");
-}
-
-.a {
- background-image: url("images/tom2.png");
-}
-
-.s {
-background-image: url("images/tom3.png");
-}
-
-.d {
-  background-image: url("images/tom4.png");
-}
-
-.j {
-  background-image: url("images/snare.png");
-}
-
-.k {
-  background-image: url("images/crash.png");
-}
-
-.l {
-  background-image: url("images/kick.png");
+.subtitle {
+  color: #fcf259;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+  margin: 0 0 32px;
+  opacity: 0.9;
 }
 
 .set {
-  margin: 10% auto;
-}
-
-.game-over {
-  background-color: red;
-  opacity: 0.8;
-}
-
-.pressed {
-  box-shadow: 0 3px 4px 0 #DBEDF3;
-  opacity: 0.5;
-}
-
-.red {
-  color: red;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin: 20px auto;
+  max-width: 1100px;
 }
 
 .drum {
+  position: relative;
   outline: none;
-  border: 10px solid #FCF259;
-  font-size: 5rem;
-  font-family: 'Arvo', cursive;
-  line-height: 2;
+  border: 6px solid #fcf259;
+  border-radius: 18px;
+  width: 130px;
+  height: 130px;
+  background-color: #ffffff;
+  background-repeat: no-repeat;
+  background-position: center 25px;
+  background-size: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 4px 6px;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+  transition: transform 0.1s ease, box-shadow 0.1s ease, border-color 0.1s ease;
+  touch-action: manipulation;
+}
+
+.drum:hover {
+  transform: translateY(-3px);
+  border-color: #ffffff;
+  box-shadow: 0 12px 24px rgba(218, 4, 99, 0.45);
+}
+
+.drum.pressed {
+  transform: translateY(2px) scale(0.96);
+  border-color: #da0463;
+  box-shadow: 0 0 20px #fcf259, inset 0 0 12px rgba(0, 0, 0, 0.2);
+  opacity: 0.85;
+}
+
+.key-letter {
+  font-family: "Arvo", cursive;
+  font-size: 2.2rem;
   font-weight: 900;
-  color: #DA0463;
-  text-shadow: 3px 0 #DBEDF3;
-  border-radius: 15px;
-  display: inline-block;
-  width: 150px;
-  height: 150px;
-  text-align: center;
-  margin: 10px;
-  background-color: white;
+  line-height: 1;
+  color: #da0463;
+  text-shadow: 1px 1px #dbedf3;
+  text-transform: uppercase;
+}
+
+.sound-name {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #4a102a;
+  background: rgba(252, 242, 89, 0.85);
+  padding: 2px 8px;
+  border-radius: 10px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.w { background-image: url("images/tom1.png"); }
+.a { background-image: url("images/tom2.png"); }
+.s { background-image: url("images/tom3.png"); }
+.d { background-image: url("images/tom4.png"); }
+.j { background-image: url("images/snare.png"); }
+.k { background-image: url("images/crash.png"); }
+.l { background-image: url("images/kick.png"); }
+
+footer {
+  color: #fce4ec;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 0.85rem;
+  margin-top: 32px;
+  opacity: 0.8;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .set {
+    gap: 12px;
+  }
+
+  .drum {
+    width: 96px;
+    height: 96px;
+    border-width: 4px;
+    background-size: 48px;
+    background-position: center 18px;
+    padding: 6px 2px 4px;
+  }
+
+  .key-letter {
+    font-size: 1.6rem;
+  }
+
+  .sound-name {
+    font-size: 0.6rem;
+    padding: 1px 6px;
+  }
 }
