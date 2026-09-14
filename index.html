@@ -3,14 +3,111 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Drum Kit Player</title>
+  <title>Drum Kit - Play Beats in Your Browser</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <main class="container">
-    <h1>Drum Kit Player</h1>
-    <p>Unleash your rhythm!<br>Play with keyboard keys or click the drums.</p>
-    <a href="drumkit.html" class="start-btn">Start Playing</a>
-  </main>
+  <div class="app-container">
+    <header class="app-header">
+      <div class="badge">Online Beat Station</div>
+      <h1>Virtual Drum Kit</h1>
+      <p class="tagline">Tap the drum pads or press the keys on your keyboard to play beats!</p>
+    </header>
+
+    <div class="control-panel">
+      <div class="volume-box">
+        <label for="volume-slider">
+          <span class="vol-icon">&#128266;</span> Volume
+        </label>
+        <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.8">
+        <span id="volume-label">80%</span>
+      </div>
+      <div class="tip-box">
+        <span class="tip-dot"></span>
+        <span>Keyboard shortcuts: <strong>W, A, S, D, J, K, L</strong></span>
+      </div>
+    </div>
+
+    <main class="drum-pads" role="region" aria-label="Drum kit pads">
+      <button class="drum-pad w" data-key="w" aria-label="Play Tom 1 with key W">
+        <div class="pad-rim">
+          <div class="pad-skin">
+            <img src="images/tom1.png" alt="" class="pad-icon" draggable="false">
+            <span class="key-badge">W</span>
+            <span class="sound-label">Tom 1</span>
+          </div>
+        </div>
+      </button>
+
+      <button class="drum-pad a" data-key="a" aria-label="Play Tom 2 with key A">
+        <div class="pad-rim">
+          <div class="pad-skin">
+            <img src="images/tom2.png" alt="" class="pad-icon" draggable="false">
+            <span class="key-badge">A</span>
+            <span class="sound-label">Tom 2</span>
+          </div>
+        </div>
+      </button>
+
+      <button class="drum-pad s" data-key="s" aria-label="Play Tom 3 with key S">
+        <div class="pad-rim">
+          <div class="pad-skin">
+            <img src="images/tom3.png" alt="" class="pad-icon" draggable="false">
+            <span class="key-badge">S</span>
+            <span class="sound-label">Tom 3</span>
+          </div>
+        </div>
+      </button>
+
+      <button class="drum-pad d" data-key="d" aria-label="Play Tom 4 with key D">
+        <div class="pad-rim">
+          <div class="pad-skin">
+            <img src="images/tom4.png" alt="" class="pad-icon" draggable="false">
+            <span class="key-badge">D</span>
+            <span class="sound-label">Tom 4</span>
+          </div>
+        </div>
+      </button>
+
+      <button class="drum-pad j" data-key="j" aria-label="Play Snare with key J">
+        <div class="pad-rim">
+          <div class="pad-skin">
+            <img src="images/snare.png" alt="" class="pad-icon" draggable="false">
+            <span class="key-badge">J</span>
+            <span class="sound-label">Snare</span>
+          </div>
+        </div>
+      </button>
+
+      <button class="drum-pad k" data-key="k" aria-label="Play Crash with key K">
+        <div class="pad-rim">
+          <div class="pad-skin">
+            <img src="images/crash.png" alt="" class="pad-icon" draggable="false">
+            <span class="key-badge">K</span>
+            <span class="sound-label">Crash</span>
+          </div>
+        </div>
+      </button>
+
+      <button class="drum-pad l" data-key="l" aria-label="Play Kick Bass with key L">
+        <div class="pad-rim">
+          <div class="pad-skin">
+            <img src="images/kick.png" alt="" class="pad-icon" draggable="false">
+            <span class="key-badge">L</span>
+            <span class="sound-label">Kick</span>
+          </div>
+        </div>
+      </button>
+    </main>
+
+    <footer class="app-footer">
+      <p>Built with vanilla HTML, CSS, and JavaScript &bull; Made by Jithendra</p>
+    </footer>
+  </div>
+
+  <script src="index.js"></script>
 </body>
 </html>
